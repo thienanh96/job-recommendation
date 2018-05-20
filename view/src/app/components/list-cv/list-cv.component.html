@@ -1,0 +1,68 @@
+<h2 class="page-header"> <span><i style="font-size: 70%" class="glyphicon glyphicon-asterisk"></i></span>&nbsp;List all CV </h2>
+<ul style="list-style-type:none">
+	<li *ngFor="let cv of listCV; let i =index">  
+		<div class="panel panel-primary">
+        <!-- <a style="color: #fff;text-decoration: none" data-toggle="modal"  title="Click to match job"> -->
+  			  <div class="panel-heading" style="font-size: 170%">
+            <a style="color: white;text-decoration: none" href (click)="openMatchModal(i)" data-toggle="modal">
+            CV {{i+1}} 
+            </a>
+          </div>
+        <!-- </a> -->
+  			  <div class="panel-body">
+  			  	<label> Name : </label> &emsp;{{cv._source.fullname}}
+  			  </div>
+  			  <div class="panel-footer">
+            <div style="width: 100%">
+              <label style="float:left: "> Work Experience &ensp;: </label> &emsp;{{cv._source.workExperience}}
+            </div>
+            <div style="width: 100%">
+              <label> Summary &ensp;: </label> &emsp;{{listCV[indexCV]._source.summary}}
+            </div>
+  			  </div>
+		</div>
+	</li>
+</ul>
+
+<div id="matchModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+          <div class="modal-header">
+                <h3 class="modal-title"><strong> CV {{indexCV+1}}</strong></h3>
+          </div>
+          <div class="modal-body">
+                <label> Name : </label> &emsp;{{listCV[indexCV]._source.fullname}}
+                <br>
+
+          </div>
+          <div class="modal-header">
+                <h3 class="modal-title"><strong>20 Suggested Jobs</strong></h3>
+          </div>
+          <div *ngIf="!spinner" class="modal-body" style="overflow: auto;height: 625px">
+                <li style="text-decoration: none" *ngFor="let job of suggestedJob; let i =index">  
+                  <strong style="font-size:140%"> Job {{job._id}} </strong>
+                  <br>
+                  <label> Title : </label> &emsp;{{job._source.title}}
+                  <br>
+                  <label> Duration : </label> &emsp;{{job._source.duration}}
+                  <br>
+                  <label> Location : </label> &emsp;{{job._source.location}}
+                  <br>
+                  <label> Description : </label> &emsp;{{job._source.jobDescription}}
+                  <br>
+                  <label> Job Requirement : </label> &emsp;{{job._source.jobRequirement}}
+                  <br>
+                  <label> Quality Requirement : </label> &emsp;{{job._source.requiredQual}}
+                  <br>
+                  <br>
+                </li>
+          </div>
+          <div *ngIf="spinner" style="display: flex;align-items: center;justify-content: center;">
+            <img width="70px" src="../../../assets/Ellipsis-1s-200px.gif">
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+          </div>
+      </div>
+  </div>
+</div>

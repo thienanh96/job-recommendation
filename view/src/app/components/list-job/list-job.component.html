@@ -1,0 +1,26 @@
+<h2 class="page-header"> <span><i style="font-size: 70%" class="glyphicon glyphicon-asterisk"></i></span>&nbsp;List all JOB </h2>
+<ul style="list-style-type:none">
+	<li *ngFor="let job of listJOB; let i =index">  
+		<div class="panel panel-info">
+			  <div class="panel-heading" style="font-size: 170%">JOB {{i+1}}</div>
+  			  <div class="panel-footer">
+  			  	<label> Title : </label> &emsp;{{job._source.title}}
+  			  </div>
+  			   <div class="panel-body">
+  			  	<label> Duration : </label> &emsp;{{job._source.duration}}
+  			  </div>
+  			   <div class="panel-body">
+  			  	<label> Location : </label> &emsp;{{job._source.location}}
+  			  </div>
+  			  <div class="panel-body">
+  			  	<label> Description : </label> &emsp;{{job._source.jobDescription}}
+  			  </div>
+  			  <div class="panel-body">
+  			  	<label> Job Requirement : </label> &emsp;{{job._source.jobRequirement}}
+  			  </div>
+  			  <div class="panel-body">
+  			  	<label> Quality Requirement : </label> &emsp;{{job._source.requiredQual}}
+  			  </div>
+		</div>
+	</li>
+</ul>
